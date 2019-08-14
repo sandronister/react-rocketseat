@@ -25,7 +25,7 @@ export default class Main extends Component{
 
         const {page,productInfo} = this.state
 
-        if(page == productInfo.pages) return
+        if(page === productInfo.pages) return
 
         const pageNumber = page+1
 
@@ -33,9 +33,9 @@ export default class Main extends Component{
     }
 
     prevPage = ()=>{
-        const {page,productInfo} = this.state
+        const {page} = this.state
 
-        if(page ==1) return
+        if(page === 1) return
 
         const pageNumber = page-1
 
@@ -43,9 +43,13 @@ export default class Main extends Component{
     }
 
     render(){
+
+        const {products, page, productInfo} = this.state
+
         return (
             <div className='product-list'>
-                {this.state.products.map(product=>(
+                <h1>{page}</h1>
+                {products.map(product=>(
                     <article key={product._id}>
                         <strong>{product.title}</strong>
                         <p>{product.description}</p>
@@ -53,8 +57,8 @@ export default class Main extends Component{
                     </article>
                 ))}
                  <div className="actions">
-                        <button onClick={this.prevPage}>Anterior</button>
-                        <button onClick={this.nextPage}>Próximo</button>
+                        <button disabled={page == 1} onClick={this.prevPage}>Anterior</button>
+                        <button disabled={page == productInfo.pages} onClick={this.nextPage}>Próximo</button>
                     </div>
             </div>
         )

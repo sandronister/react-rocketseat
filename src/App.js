@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from './components/Header'
-import Main from './components/Main'
+import Routes from './routes'
+
 import './style.css'
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Main/>
+      <Routes/>
     </div>
   );
 }
